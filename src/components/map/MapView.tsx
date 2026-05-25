@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-export const MapView: React.FC = () => {
+interface MapViewProps {
+  center?: [number, number];
+  zoom?: number;
+}
+
+export const MapView: React.FC<MapViewProps> = ({ center = [0, 0], zoom = 10 }) => {
+  const mapContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Initialize map
+  }, [center, zoom]);
+
   return (
-    <div className="map-view">
-      {/* Map component content will go here */}
-    </div>
+    <div
+      ref={mapContainer}
+      className="map-view"
+      style={{ width: '100%', height: '100%' }}
+    />
   );
 };
 
